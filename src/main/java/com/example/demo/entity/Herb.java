@@ -15,7 +15,7 @@ public class Herb {
 	
 	private String latin;
 	
-	private String uses;
+	private String partsUsed;
 	
 	
 	
@@ -24,20 +24,20 @@ public class Herb {
 	}
 
 	
-	public Herb(Long id, String name, String latin, String uses) {
+	public Herb(Long id, String name, String latin, String partsUsed) {
 		super();
 		Id = id;
 		this.name = name;
 		this.latin = latin;
-		this.uses = uses;
+		this.partsUsed = partsUsed;
 	}
 
 
-	public Herb(String name, String latin, String uses) {
+	public Herb(String name, String latin, String partsUsed) {
 		super();
 		this.name = name;
 		this.latin = latin;
-		this.uses = uses;
+		this.partsUsed = partsUsed;
 	}
 	
 	public Long getId() {
@@ -55,12 +55,15 @@ public class Herb {
 	public void setLatin(String latin) {
 		this.latin = latin;
 	}
-	public String getUses() {
-		return uses;
+
+	public String getPartsUsed() {
+		return partsUsed;
 	}
-	public void setUses(String uses) {
-		this.uses = uses;
+
+	public void setPartsUsed(String partsUsed) {
+		this.partsUsed = partsUsed;
 	}
+	
 	
 	
 }
