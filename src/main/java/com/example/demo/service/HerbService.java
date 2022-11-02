@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Herb;
@@ -22,9 +23,9 @@ public class HerbService {
 		return repo.save(herb);
 	}
 	
-	public List<Herb> addMany(List<Herb> herb){
+	public List<Herb> addMultiple(List<Herb> herbs){
 		List<Herb> output = new ArrayList<Herb>();
-		herb.forEach(t -> output.add(add(t)));
+		herbs.forEach(t -> output.add(add(t)));
 		return output;
 	}
 	
@@ -41,15 +42,15 @@ public class HerbService {
     	
     	
     }
-	
-	public Herb update(Long Id, Herb herb) {
-		Herb found = repo.findById(Id).orElseThrow(HerbNotFound::new);
+    
+	public Herb update(Long id, Herb herb) {
+		Herb found = repo.findById(id).orElseThrow(HerbNotFound::new);
 		
 		found.setName(herb.getName());
 		found.setLatin(herb.getLatin());
-		found.setUses(herb.getUses());
+		found.setPartsUsed(herb.getPartsUsed());
 		
-		return repo.save(herb);
+		return repo.save(found);
 	}
     	
 	public boolean delete(Long index) {
