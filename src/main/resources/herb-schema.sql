@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS herb CASCADE;
+CREATE TABLE herb
+(
+	id BIGINT PRIMARY KEY AUTO_INCREMENT,
+	latin VARCHAR(255), 
+	name VARCHAR(255), 
+	parts_used VARCHAR(255), 
+	primary key (id)
+);
