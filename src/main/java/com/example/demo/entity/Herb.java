@@ -1,4 +1,6 @@
 package com.example.demo.entity;
+import java.util.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -40,15 +42,21 @@ public class Herb {
 		this.partsUsed = partsUsed;
 	}
 	
+
 	public Long getId() {
 		return Id;
 	}
+	public void setId(Long id) {
+		Id = id;
+	}
+
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public String getLatin() {
 		return latin;
 	}
@@ -63,6 +71,34 @@ public class Herb {
 	public void setPartsUsed(String partsUsed) {
 		this.partsUsed = partsUsed;
 	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(Id, latin, name, partsUsed);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Herb other = (Herb) obj;
+		return Objects.equals(Id, other.Id) && Objects.equals(latin, other.latin) && Objects.equals(name, other.name)
+				&& Objects.equals(partsUsed, other.partsUsed);
+	}
+
+
+	
+
+
+
+	
+	
 	
 	
 	

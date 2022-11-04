@@ -2,15 +2,16 @@ package com.example.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Herb;
 import com.example.demo.exceptions.HerbNotFound;
 import com.example.demo.repository.HerbRepo;
 
-import java.util.ArrayList;
+
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class HerbService {
@@ -24,12 +25,10 @@ public class HerbService {
 	}
 	
 	public List<Herb> addMultiple(List<Herb> herbs){
-		List<Herb> output = new ArrayList<Herb>();
-		herbs.forEach(t -> output.add(add(t)));
-		return output;
+		return this.repo.saveAll(herbs);
 	}
 	
-	public List<Herb> getAll() {
+	public List<Herb> findAll() {
 		return repo.findAll();
 	}
 	
@@ -37,11 +36,6 @@ public class HerbService {
 		return repo.findById(index).orElseThrow(HerbNotFound::new);
 	}
 	
-    public Optional<Herb> findById(Long Id) {
-    	return repo.findById(Id);
-    	
-    	
-    }
     
 	public Herb update(Long id, Herb herb) {
 		Herb found = repo.findById(id).orElseThrow(HerbNotFound::new);
@@ -53,9 +47,13 @@ public class HerbService {
 		return repo.save(found);
 	}
     	
-	public boolean delete(Long index) {
-    	repo.deleteById(index);
-    	return (!repo.existsById(index));
+//	public boolean delete(Long index) {
+//    	repo.deleteById(index);
+//    	return (!repo.existsById(index));
+	public boolean delete(Long id) {
+		this.repo.deleteById(id);
+		boolean deleted = !this.repo.existsById(id);
+		return deleted;
 	}
 
 
